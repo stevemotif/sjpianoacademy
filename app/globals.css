@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-nunito: 'Nunito', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F8F5EF;
+  color: #2C2C2C;
+  font-family: var(--font-nunito), sans-serif;
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: var(--font-cormorant), serif;
+  }
+}
+
+@layer components {
+  .section-heading {
+    @apply font-display text-4xl md:text-5xl font-light text-navy leading-tight;
+  }
+  .section-subheading {
+    @apply font-body text-muted text-base md:text-lg font-light tracking-wide;
+  }
+  .btn-primary {
+    @apply inline-block bg-navy text-ivory px-8 py-3.5 font-body text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-navy-light hover:shadow-lg;
+  }
+  .btn-outline {
+    @apply inline-block border border-navy text-navy px-8 py-3.5 font-body text-sm font-semibold tracking-widest uppercase transition-all duration-300 hover:bg-navy hover:text-ivory;
+  }
+  .gold-line {
+    @apply block w-12 h-0.5 bg-gold;
+  }
+  .card {
+    @apply bg-white shadow-sm hover:shadow-md transition-shadow duration-300;
+  }
+}
+
+/* Animate on scroll — simple CSS approach */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Nav underline effect */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: #B8962E;
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Hero scroll indicator */
+@keyframes slideDown {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+/* Piano key decoration */
+.piano-keys-bg {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 14px,
+    rgba(26, 39, 68, 0.04) 14px,
+    rgba(26, 39, 68, 0.04) 15px
+  );
+}
+
+/* Form inputs */
+.form-input {
+  @apply w-full border border-ivory-dark bg-white px-4 py-3 font-body text-sm text-charcoal placeholder-muted/60 focus:outline-none focus:border-navy transition-colors duration-200;
+}
+
+.form-select {
+  @apply w-full border border-ivory-dark bg-white px-4 py-3 font-body text-sm text-charcoal focus:outline-none focus:border-navy transition-colors duration-200 appearance-none cursor-pointer;
+}
