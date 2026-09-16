@@ -20,12 +20,15 @@ export default function Navbar() {
   // Only the home page has a dark hero — other pages have light backgrounds
   const isHome = pathname === '/'
   const transparent = isHome && !scrolled
+  const isDashboard = pathname?.startsWith('/dashboard')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  if (isDashboard) return null
 
   return (
     <header

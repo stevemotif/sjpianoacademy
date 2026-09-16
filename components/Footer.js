@@ -1,8 +1,14 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { MapPin, Phone, Mail } from 'lucide-react'
 import { siteConfig } from '@/lib/data'
 
 export default function Footer() {
+  const pathname = usePathname()
+  if (pathname?.startsWith('/dashboard')) return null
+
   return (
     <footer className="bg-navy text-ivory/80">
       <div className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
